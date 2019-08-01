@@ -5,7 +5,8 @@ const cors = require("cors");
 const corsOptions = require("./cors-whitelist");
 const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
-const foldersRouter = require("./folders/folers-router");
+const foldersRouter = require("./folders/folders-router");
+const notesRouter = require("./notes/notes-router");
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(cors({ origin: corsOptions }));
 app.use(helmet());
 
 app.use("/api/folders", foldersRouter);
+app.use("/api/notes", notesRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");

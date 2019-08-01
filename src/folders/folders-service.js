@@ -2,11 +2,10 @@ const xss = require('xss')
 
 const FoldersService = {
   getAllFolders(db) {
-    return db
-      .from('noteful_folders')
+    return db('noteful_folders')
   },
 
-  insertNewFoler(db, newFolder) {
+  insertNewFolder(db, newFolder) {
     return db('noteful_folders')
       .insert(newFolder)
       .returning('*')
@@ -19,7 +18,7 @@ const FoldersService = {
 
   serializeFolder(folder) {
     return {
-      id: folder.id,
+      id: String(folder.id),
       name: xss(folder.name)
     }
   }

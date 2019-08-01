@@ -23,7 +23,7 @@ foldersRouter
       })
     }
 
-    FoldersService.insertNewFoler(req.app.get('db'), { name })
+    FoldersService.insertNewFolder(req.app.get('db'), { name })
       .then(folder => {
         res
           .status(201)
